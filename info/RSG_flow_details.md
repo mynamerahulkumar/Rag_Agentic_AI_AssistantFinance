@@ -1,6 +1,6 @@
 
 
-## 🔄 Complete RAG Flow 
+## 📋 Complete RAG Flow 
 
 ### Timeline of What Happens:
 
