@@ -1,16 +1,6 @@
-# 📖 Simple RAG Flow Explanation for Interview
 
-> **Clear and concise explanation of when vector database is stored and the complete RAG workflow**
 
----
-
-## 🎯 Quick Answer: When is Vector Database Stored?
-
-**Answer**: The vector database is stored **when the user sends their first query** (not during file upload, not during search). It happens **before search**, in the `process_documents` step.
-
----
-
-## 🔄 Complete RAG Flow (Simple Explanation)
+## 🔄 Complete RAG Flow 
 
 ### Timeline of What Happens:
 
@@ -258,25 +248,30 @@ This approach:
 
 ---
 
-## 🎯 Interview Practice Questions & Answers
+## 🎯 Some common key points
 
-### Q1: When is the vector database created?
+###  When is the vector database created?
 **A**: The vector database is created when the user sends their first query, in the `process_documents` node. It's not created during file upload.
 
-### Q2: When is the vector database saved to disk?
+###  When is the vector database saved to disk?
 **A**: The vector database is saved to disk immediately after creation, in the `create_vectorstore()` method, which is called during the `process_documents` step (before search).
 
-### Q3: Does the system reprocess documents every time?
+###  Does the system reprocess documents every time?
 **A**: No. The system first checks if a vectorstore exists on disk for the uploaded files. If found, it loads the existing vectorstore instead of reprocessing.
 
-### Q4: What happens if I upload the same file twice?
+### What happens if I upload the same file twice?
 **A**: The system generates a hash based on file names. If you upload the same files again, it will find the existing vectorstore and reuse it, avoiding reprocessing.
 
-### Q5: Where is the vector database stored?
+###   Where is the vector database stored?
 **A**: It's stored in `./vectorstore_db/vectorstore_{file_hash}/` directory, containing:
 - `index.faiss` - FAISS index with embeddings
 - `index.pkl` - Document metadata and mappings
 - `metadata.json` - File information and chunk count
+
+
+## 🎯 When is Vector Database Stored?
+
+**A**: The vector database is stored **when the user sends their first query** (not during file upload, not during search). It happens **before search**, in the `process_documents` step.
 
 ---
 
